@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --candy-size: 60px;
+    --grid-rows:8;
+    --grid-columns:8
+}
+
+body{
+    height: 100vh;
+    background:linear-gradient(#2b5876 ,#4e4376);
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.candy-grid{
+    display:flex;
+    justify-content: flex-start;
+    align-content: flex-start;
+    width: calc(var(--candy-size)*var(--grid-columns));
+    height: calc(var(--candy-size)*var(--grid-rows));
+    flex-wrap: wrap;
+    flex-shrink: 0;
+    flex-grow: 0;
+    background: white;
+}
+
+.candy{
+    width: var(--candy-size);
+    height: var(--candy-size);
+}
