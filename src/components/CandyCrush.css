@@ -5,8 +5,8 @@
 
 :root {
   --candy-size: 60px;
-  --grid-rows: 4;
-  --grid-columns: 4;
+  --grid-rows: 8;
+  --grid-columns: 8;
 }
 
 body {
