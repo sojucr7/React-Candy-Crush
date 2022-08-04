@@ -9,13 +9,15 @@ function CandyCrush() {
         'blue',
         'pink',
         'purple',
+        'yellow',
+        'orange',
     ]
 
     const GRID_ROWS = parseInt(getComputedStyle(document.body).getPropertyValue('--grid-rows'))
 
     const GRID_COLUMNS = parseInt(getComputedStyle(document.body).getPropertyValue('--grid-columns'))
 
-    const GRID_SIZE = GRID_ROWS * GRID_COLUMNS;
+    const GRID_SIZE = GRID_ROWS * GRID_COLUMNS
 
     const [grid, setGrid] = useState([])
 
@@ -92,28 +94,22 @@ function CandyCrush() {
 
     const slideDownToEmptySpot = () => {
         for (let j = 0; j < GRID_COLUMNS; j++) {
-            let blankRows = [];
+            let blankRows = []
             for (let i = GRID_ROWS - 1; i >= 0; i--) {
                 if (grid[i * GRID_COLUMNS + j]) {
-                    let emptyItem = blankRows.shift();
+                    let emptyItem = blankRows.shift()
                     if (emptyItem) {
-                        grid[emptyItem] = grid[i * GRID_COLUMNS + j];
-                        blankRows.push(i * GRID_COLUMNS + j);
+                        grid[emptyItem] = grid[i * GRID_COLUMNS + j]
+                        grid[i * GRID_COLUMNS + j]='';
+                        blankRows.push(i * GRID_COLUMNS + j)
                     }
                 }
                 else {
-                    blankRows.push(i * GRID_COLUMNS + j);
+                    blankRows.push(i * GRID_COLUMNS + j)
                 }
+               
             }
             blankRows.forEach((blankRow) => grid[blankRow] = colors[Math.floor(Math.random() * colors.length)])
-        }
-    }
-
-    const fillTopRowWithNewCandy = () => {
-        for (let j = 0; j < GRID_COLUMNS; j++) {
-            if (grid[j] == '') {
-                grid[j] = colors[Math.floor(Math.random() * colors.length)]
-            }
         }
     }
 
@@ -133,7 +129,7 @@ function CandyCrush() {
             crushMatchOfThreeCandiesInAColumn()
             slideDownToEmptySpot()
             setGrid([...grid])
-        }, 150)
+        },500)
         return () => clearInterval(interval)
 
     }, [grid])
